@@ -52,7 +52,6 @@ namespace ex20
             {
                 Console.WriteLine($"\nЛокальный максимум: {array[0]}");
             }
-
         }
     }
 }
