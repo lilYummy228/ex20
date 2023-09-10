@@ -13,9 +13,8 @@ namespace ex20
             int sizeOfArray = 30;
             int[] array = new int[sizeOfArray];
             int lastElementOfArray = sizeOfArray - 1;
-            int nearbyElement = 1;
             int randomMinValue = -100;
-            int randomMaxValue = 101; 
+            int randomMaxValue = 100;
             Random random = new Random();
 
             for (int i = 0; i < array.Length; i++)
@@ -24,32 +23,36 @@ namespace ex20
                 Console.Write($"{array[i]}|");
             }
 
-            Console.WriteLine("\n");
-
-            for (int i = 0; i < array.Length; i++)
+            if (sizeOfArray > 1)
             {
-                if (i > 0 && i < lastElementOfArray)
+                Console.WriteLine("\n");
+
+                if (array[0] > array[1])
                 {
-                    if (array[i] > array[i - nearbyElement] && array[i] > array[i + nearbyElement])
+                    Console.WriteLine($"Локальный максимум: {array[0]}");
+                }
+
+                for (int i = 0; i < array.Length; i++)
+                {
+                    if (i > 0 && i < lastElementOfArray)
                     {
-                        Console.WriteLine($"Локальный максимум: {array[i]}");
+                        if (array[i] > array[i - 1] && array[i] > array[i + 1])
+                        {
+                            Console.WriteLine($"Локальный максимум: {array[i]}");
+                        }
                     }
                 }
-                else if (i == lastElementOfArray)
+
+                if (array[lastElementOfArray] > array[lastElementOfArray - 1])
                 {
-                    if (array[i] > array[i - nearbyElement])
-                    {
-                        Console.WriteLine($"Локальный максимум: {array[i]}");
-                    }
-                }
-                else if (i == 0)
-                {
-                    if (array[i] > array[i + nearbyElement])
-                    {
-                        Console.WriteLine($"Локальный максимум: {array[i]}");
-                    }
+                    Console.WriteLine($"Локальный максимум: {array[lastElementOfArray]}");
                 }
             }
+            else
+            {
+                Console.WriteLine($"\nЛокальный максимум: {array[0]}");
+            }
+
         }
     }
 }
